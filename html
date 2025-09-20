@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CryptoModa — Plataforma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0a; /* preto */
+      --accent-pink:#ff5aa3;
+      --accent-yellow:#ffd24d;
+      --white:#ffffff;
+      --muted:#bdbdbd;
+      --card:#0f0f0f;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial; margin:0; background:linear-gradient(180deg,var(--bg) 0%, #070707 100%); color:var(--white)}
+    header{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid rgba(255,255,255,0.04);position:sticky;top:0;background:rgba(10,10,10,0.6);backdrop-filter:blur(6px);z-index:50}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--accent-pink),var(--accent-yellow));display:flex;align-items:center;justify-content:center;font-weight:800;color:#0a0a0a;font-size:20px}
+    nav a{color:var(--muted);text-decoration:none;margin:0 10px;font-weight:600}
+    .btn{padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent-pink),var(--accent-yellow));color:#0a0a0a;font-weight:700;border:none;cursor:pointer}
+
+    .hero{display:flex;gap:36px;align-items:center;padding:60px 32px;max-width:1200px;margin:0 auto}
+    .hero-left{flex:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;color:var(--muted);font-weight:600}
+    h1{font-size:44px;margin:18px 0 12px;line-height:1.02}
+    p.lead{color:var(--muted);max-width:560px}
+    .hero-actions{margin-top:22px;display:flex;gap:12px}
+
+    .showcase{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:10px}
+    .product-img{height:160px;border-radius:8px;background:linear-gradient(135deg,rgba(255,90,163,0.12), rgba(255,210,77,0.08));display:flex;align-items:center;justify-content:center;font-size:56px}
+    .price{font-weight:700}
+
+    section.features{padding:36px 32px;max-width:1200px;margin:0 auto}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .feature{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .feature h3{margin:8px 0}
+    .muted{color:var(--muted)}
+
+    footer{padding:28px 32px;margin-top:28px;border-top:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;align-items:center}
+
+    /* bitcoin badge */
+    .btc-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent-yellow),var(--accent-pink));padding:6px 10px;border-radius:999px;color:#0a0a0a;font-weight:800}
+
+    /* responsive */
+    @media(max-width:900px){
+      .hero{flex-direction:column;padding:28px 20px}
+      h1{font-size:30px}
+      .showcase{grid-template-columns:1fr}
+    }
+
+    /* small utilities */
+    .tag{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;color:var(--muted);font-weight:700}
+    .search{display:flex;gap:8px;align-items:center;background:rgba(255,255,255,0.02);padding:8px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    input[type="search"]{background:transparent;border:0;outline:none;color:var(--white);font-weight:600}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">₿</div>
+      <div>
+        <div style="font-weight:700">CryptoModa</div>
+        <div style="font-size:12px;color:var(--muted)">Moda + Cripto • Loja NFT e Pagamento BTC</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#colecao">Coleção</a>
+      <a href="#nft">NFT</a>
+      <a href="#faq">FAQ</a>
+      <button class="btn" onclick="connectWallet()">Conectar Wallet</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <div class="eyebrow"><span class="btc-badge">₿</span><span style="font-size:13px">Pagamentos em Bitcoin</span></div>
+        <h1>Moda cripto que brilha — preto, rosa, amarelo e branco.</h1>
+        <p class="lead">Plataforma de moda que aceita Bitcoin, com NFTs de coleções limitadas, carteira integrada e vitrine interativa. Use a paleta preta, rosa (pink), amarelo e branco para um visual urbano e vibrante.</p>
+
+        <div class="hero-actions">
+          <button class="btn" onclick="openStore()">Ver Coleção</button>
+          <button class="tag" onclick="openNFT()">Explorar NFTs</button>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+          <div class="search" style="flex:1;max-width:420px"><input type="search" placeholder="Buscar: jaqueta, NFT, tamanhos..." /></div>
+          <div class="tag">Entrega 🇧🇷</div>
+        </div>
+      </div>
+
+      <div class="showcase">
+        <div class="card">
+          <div class="product-img">👕</div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Jaqueta ₿ Street</div>
+              <div class="muted">Edição limitada — 1/100 NFT</div>
+            </div>
+            <div style="text-align:right">
+              <div class="price">0.012 BTC</div>
+              <div style="font-size:12px;color:var(--muted)">~ R$ (varia)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="product-img">👟</div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Tênis CryptoWalk</div>
+              <div class="muted">Couro sintético — Preta/Rosa</div>
+            </div>
+            <div style="text-align:right">
+              <div class="price">0.0075 BTC</div>
+              <div style="font-size:12px;color:var(--muted)">~ R$ (varia)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="product-img">👜</div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Bolsa ₿ Chic</div>
+              <div class="muted">Detalhes em dourado — Amarelo</div>
+            </div>
+            <div style="text-align:right">
+              <div class="price">0.0042 BTC</div>
+              <div style="font-size:12px;color:var(--muted)">~ R$ (varia)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="product-img">🎩</div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Chapéu Neon</div>
+              <div class="muted">Acende em eventos — Branco/Rosa</div>
+            </div>
+            <div style="text-align:right">
+              <div class="price">0.0021 BTC</div>
+              <div style="font-size:12px;color:var(--muted)">~ R$ (varia)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="features" id="colecao">
+      <h2 style="margin:0 0 14px">Recursos da plataforma</h2>
+      <div class="grid">
+        <div class="feature">
+          <h3>Pagamentos em Bitcoin</h3>
+          <p class="muted">Checkout simples com QR code e ordens on‑chain. Transparência e segurança.</p>
+        </div>
+        <div class="feature">
+          <h3>NFTs de Edição Limitada</h3>
+          <p class="muted">Cada peça pode vir com um NFT comprovando autenticidade e propriedade.</p>
+        </div>
+        <div class="feature">
+          <h3>Carteira Integrada</h3>
+          <p class="muted">Conecte MetaMask, WalletConnect ou use nossa carteira hospedada para compras rápidas.</p>
+        </div>
+        <div class="feature">
+          <h3>Design Responsivo</h3>
+          <p class="muted">Vitrine otimizada para mobile com foco em imagens e navegação rápida.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1200px;margin:0 auto;padding:0 32px 48px">
+      <h2 style="margin-bottom:12px">Como funciona</h2>
+      <ol style="color:var(--muted);">
+        <li>Escolha a peça desejada.</li>
+        <li>Selecione pagar com Bitcoin — gere o QR ou pague pela carteira.</li>
+        <li>Receba um NFT (se aplicável) que garante autenticidade.</li>
+        <li>Acompanhe o envio pelo painel da conta.</li>
+      </ol>
+    </section>
+  
+    <section style="max-width:1200px;margin:0 auto;padding:0 32px 48px" id="cryptos">
+      <h2 style="margin-bottom:12px">Melhores criptomoedas (pesquisa)</h2>
+      <p style="color:var(--muted);margin-bottom:12px">Lista baseada em capitalização de mercado, adoção e utilidade (dados recentes).</p>
+      <div class="grid">
+        <div class="feature">
+          <h3>Bitcoin (BTC)</h3>
+          <p class="muted">Reserva de valor cripto, maior capitalização e alta liquidez — ideal para aceitar pagamentos e exibir preço em BTC na loja.</p>
+        </div>
+        <div class="feature">
+          <h3>Ethereum (ETH)</h3>
+          <p class="muted">Plataforma líder para contratos inteligentes e NFTs — útil se quiser emitir NFTs vinculados às peças.</p>
+        </div>
+        <div class="feature">
+          <h3>Tether (USDT)</h3>
+          <p class="muted">Stablecoin amplamente utilizada para liquidez e estabilidade de preços (útil nos bastidores do checkout).</p>
+        </div>
+        <div class="feature">
+          <h3>Binance Coin (BNB)</h3>
+          <p class="muted">Token do ecossistema Binance — taxas reduzidas em exchange e utilidade para pagamentos/serviços.</p>
+        </div>
+        <div class="feature">
+          <h3>Solana (SOL)</h3>
+          <p class="muted">Rede rápida e barata, indicada para coleções NFT com muitas transações e experiências interativas.</p>
+        </div>
+        <div class="feature">
+          <h3>Cardano (ADA)</h3>
+          <p class="muted">Foco em pesquisa e segurança — opção de diversificar coleções NFT com ênfase em sustentabilidade.</p>
+        </div>
+      </div>
+      <p style="color:var(--muted);margin-top:14px">Quer que eu mostre preços atuais (BTC/ETH) e um pequeno widget de conversão para o seu checkout?</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <div style="font-weight:700">CryptoModa</div>
+      <div style="color:var(--muted);font-size:13px">© 2025 CryptoModa — Todos os direitos reservados</div>
+    </div>
+
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="muted">Suporte</div>
+      <div class="muted">Política</div>
+    </div>
+  </footer>
+
+  <script>
+    function connectWallet(){
+      alert('Simulação: abrir fluxo de conexão de carteira (MetaMask / WalletConnect)')
+    }
+    function openStore(){
+      document.getElementById('colecao').scrollIntoView({behavior:'smooth'});
+    }
+    function openNFT(){
+      alert('Simulação: abrir galeria de NFTs')
+    }
+  </script>
+</body>
+</html>
